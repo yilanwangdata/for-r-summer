@@ -18,7 +18,7 @@ head(gss2$rnatchld)
 
 #summary(gss)
 #summary(gss2)
-## testing the grey peril hypothesis ##
+##testing the grey peril hypothesis ##
 ml1 = mlogit(rnatchld ~ 1 | age + educ + sex + prestg80 + as.factor(region), data=gss2, reflevel="2")
 summary(ml1)
 
@@ -26,7 +26,7 @@ test = ((0.01872522-0.00445479)^2)/(0.00472158^2 + 0.00259763^2)
 test
 pchisq(test, df = 1, lower.tail = FALSE)
 exp(coef(ml1))
-## add in children ##
+##add in children ##
 ml2 = mlogit(rnatchld ~ 1 | age + childs + educ + sex  + prestg80 + as.factor(region), data=gss2, reflevel="2")
 summary(ml2)
 
@@ -34,7 +34,7 @@ test2 = (( 0.01692479-0.00632173)^2)/(0.00507468^2 + 0.00281551^2)
 test2
 pchisq(test2, df = 1, lower.tail = FALSE)
 
-## interact children with age ##
+##interact children with age ##
 ml3 = mlogit(rnatchld ~ 1 | age*childs + educ + sex  + prestg80 + as.factor(region), data=gss2, reflevel="2")
 summary(ml2)
 
@@ -45,7 +45,7 @@ gss$ncok <- relevel(as.factor(gss$rnatchld), ref = 2)
 head(gss$ncok)
 
 summary(gss$ncok)
-## same as above ##
+##same as above ##
 mult1 = multinom(ncok ~ age + educ + sex + prestg80 + as.factor(region), data=gss)
 summary(mult1)
 
